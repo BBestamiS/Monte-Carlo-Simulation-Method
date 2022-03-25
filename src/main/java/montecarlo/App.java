@@ -33,7 +33,7 @@ public class App {
                     // sıralanması sağlandı. Sıralı listenin
                     // içerisinde ki elemanların frekans değerlerinin hesaplanması için
                     // getFrequency() metoduna, dataList'i yolluyorum ve bunun sonucunda bana bu
-                    // metod bir liste döndürüyor. Bu liste;
+                    // metot bir liste döndürüyor. Bu liste;
                     // [gönderilen miktar1, frekans değeri1, gönderilen miktar2, frekans değeri2,
                     // ....]
                     // tarzında kaç farklı değer varsa, listenin çift sayılı indexlerinde gönderilen
@@ -45,14 +45,14 @@ public class App {
                     // şekilde modellendi; [gönderilen miktar1, frekans değeri1, olasılık değeri1,
                     // ......] şeklinde tüm gönderilen miktarların hem frekansı hem olasılıkları tek
                     // bir listede tutulur duruma getirildi. Daha sonra bu liste probabilityList
-                    // listesine yazılarak, cumulativeProbability() metoduna gönderildi. Bu metod da
-                    // diğer metodlar gibi kümülatif olasılığı hesaplayıp listenin sonuna ekler
-                    // şekilde devam ettirildi ve bu metod bittiğinde elimizde [gönderilen miktar1,
+                    // listesine yazılarak, cumulativeProbability() metoduna gönderildi. Bu metot da
+                    // diğer metotlar gibi kümülatif olasılığı hesaplayıp listenin sonuna ekler
+                    // şekilde devam ettirildi ve bu metot bittiğinde elimizde [gönderilen miktar1,
                     // frekans değeri1, olasılık değeri1, kümülatif olasılık1, ......] tarzında bir
                     // liste oluşturuldu ve ihityaç duyulan tüm elemanlar bir listeye sığdırılmış
                     // hale getirildi. Program çalıştırıldığında bu liste ekrana yazdırılmaktadır.
                     // Daha sonra bilgisayara rastgele sayılar ürettirmek ve tahmin oluşturmak için
-                    // createEstimated() metoduna listenin son hali yollanmaktadır. Bu metod,
+                    // createEstimated() metoduna listenin son hali yollanmaktadır. Bu metot,
                     // kullanıcının dilediği tekrar sayısı kadar 12 aylık süreci tekrar edecek ve
                     // oluşturulan rastgele sayıların kümülatif olasılığı göz önüne alınarak hangi
                     // değer de olduğunu bulacaktır. Bulunan değerler her ay'a tek tek eklenip
@@ -65,7 +65,7 @@ public class App {
                                                              // System.out.println(dataList.toString());
 
                     List cumulativeList = calculateAllParameters(dataList);// frekans, olasılık ve kümülatif olasılık
-                                                                           // metodlarının çağrıldığı ve oluşturulan
+                                                                           // metotlarının çağrıldığı ve oluşturulan
                                                                            // listenin ekrana basıldığı fonksiyon.
 
                     System.out.println("12 ay için kaç tekrar oluşturulsun?");
@@ -119,11 +119,11 @@ public class App {
     public static List calculateAllParameters(List dataList) {
         Collections.sort(dataList); // dataList'in sıralanması
 
-        List frequencyList = getFrequency(dataList); // frekans tablosunu oluşturacak olan metod
+        List frequencyList = getFrequency(dataList); // frekans tablosunu oluşturacak olan metot
         List probabilityList = getProbability(frequencyList); // her bir frekansın toplam frekanslara
-                                                              // oranını tabloya ekleyen metod
+                                                              // oranını tabloya ekleyen metot
         List cumulativeList = cumulativeProbability(probabilityList); // kümülatif olasılığı tabloya ekleyen
-                                                                      // metod
+                                                                      // metot
         System.out.println("-------------------------------------------------------------------");
         System.out.println(
                 "Excel dosyasında okunan değerlerin miktar, frekans, olasılık ve kümülatif olasılık tablosu");
@@ -142,9 +142,9 @@ public class App {
     public static void calculateAllParametersForResult(List dataList) {
         Collections.sort(dataList); // dataList'in sıralanması
 
-        List frequencyList = getFrequency(dataList); // frekans tablosunu oluşturacak olan metod
+        List frequencyList = getFrequency(dataList); // frekans tablosunu oluşturacak olan metot
         List probabilityList = getProbability(frequencyList); // her bir frekansın toplam frekanslara
-                                                              // oranını tabloya ekleyen metod
+                                                              // oranını tabloya ekleyen metot
         System.out.println("-------------------------------------------------------------------");
         System.out.println(
                 "Oluşturulan değerlerin miktar, frekans ve olasılık  tablosu");
@@ -230,6 +230,9 @@ public class App {
     }
 
     public static List cumulativeProbability(List dataList) {
+        // Bu fonksiyon kümülatif olasılık hesabında kullanılır. Bu işi bir önceki
+        // değerin kümülatif olasılıyla, o anki değerin frekansının olasılını
+        // toplar ve listenin sonuna ekler.
         List tmpList = new ArrayList();
         double tmp = 0;
         for (int i = 2; i < dataList.size(); i = i + 3) {
@@ -243,6 +246,12 @@ public class App {
     }
 
     public static List getFrequency(List dataList) {
+        // dataList içerisinde ki elemanların tekrar sayılarını hesaplayıp bunları
+        // [gönderilen miktar1, frekans değeri1, gönderilen miktar2, frekans değeri2,
+        // ....] formatta liste haline döndüren fonksiyon. Fonksiyona gelen liste sıralı
+        // olduğu için, eğer bakılan eleman önceki elemandan farklı ise; önceki eleman
+        // dizinin başka bir yerinde bulunmadığı anlaşılır ve frekansı hesaplanır
+
         List<Integer> frequencyList = new ArrayList<Integer>();
         int tmp = (Integer) dataList.get(0);
         int frequencyListIndex = -1;
@@ -254,6 +263,7 @@ public class App {
                 frequencyList.add(1);
             } else {
                 if (frequencyListIndex == -1) {
+                    // liste boşsa set yapmak yerine eklme işlemi yapacak olan koşul
                     frequencyList.add((Integer) dataList.get(i));
                     frequencyList.add(1);
                     frequencyListIndex = 0;
@@ -268,6 +278,9 @@ public class App {
     }
 
     public static List getProbability(List dataList) {
+        // Bu fonksiyon, frekansı hesaplanan listenin olasılığını hesaplamayı sağlar.
+        // Bunu her değerin frekans değeriyle, toplam değer sayısının bölümüyle bulur ve
+        // gelen listenin sonuna olasılık değerini atar.
         List tmpList = new ArrayList();
         int rowCount = read_xlsx_file.getRowCount();
 
