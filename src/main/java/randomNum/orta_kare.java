@@ -7,6 +7,7 @@ public class orta_kare {
     // Bu sınıf orta kare yöntemi kullanarak, rastgele sayı üretimi için
     // yazılmıştır.
     public static void rndOrtaKare(int i, float x0) {
+
         // Bu algoritma bir sayı alır. Aldığı sayıyının
         // karesini alır. Bu sayıdan, gelen sayının basamak sayısı kadar, ortasından
         // sayı alınabilmesi için izlenen yöntem şudur; Diyelim gelen sayı 5489
@@ -19,7 +20,7 @@ public class orta_kare {
         // değeri bulunmaktadır. İlk gelen sayının basamak sayısı 4'tür ve ortadan 4
         // basamaklı sayı alınması gerekmektedir. 4 basamaktan biri 9 olduğuna göre.
         // 4'den 1 çıkartılır. 3 sayısı bulunur. İlk gelen değer çift basamaklı olduğu
-        // için ortancası yoktur. bu yüzden bulunan 9 değerinin sağında, alınması
+        // için ortancası yoktur. Bu yüzden bulunan 9 değerinin sağında, alınması
         // gereken 1 eleman; solunda
         // 2 eleman vardır ve ilk sayı çift ise her zaman sol taraf sağ taraftan 1
         // basamak daha fazladır. Bunun hesabı için 3 sayısı 2 ye bölünür ve '1' integer
@@ -72,6 +73,7 @@ public class orta_kare {
             int secondNumTmpDigit = secondNumDigit;
             List<Integer> secondNumList = new ArrayList<Integer>();
             if (secondNumDigit > firstNumDigit) {
+                // Üretilebilecek sayı kalmaması durumunu kontrol eden koşul
                 for (int j = secondNumTmpDigit; j >= 1; j--) {
                     int s = (int) Math.pow(10, (secondNumTmpDigit - 1));
                     int asd = (int) squareOfFirtsNum / s;
@@ -95,11 +97,12 @@ public class orta_kare {
                         digitTmp = digitTmp / 10;
                         tmp++;
                     }
+                    // Sayıların karelerini tutan listeleri görebilmek için alttaki yorum satırını
+                    // açınız
                     // System.out.println(secondNumList.toString());
                     System.out.println(w + 1 + ". üretilen sayı ="
-                            + (double) resultNum / ((int) Math.pow(10, (firstNumDigit)))); // Üretilen
-                    // Random
-                    // sayı
+                            + (double) resultNum / ((int) Math.pow(10, (firstNumDigit))));
+                    // Üretilen Random sayı
                     x = resultNum;
 
                 } else {
@@ -114,13 +117,13 @@ public class orta_kare {
                         digitTmp = digitTmp / 10;
                         tmp++;
                     }
-
+                    // Sayıların karelerini tutan listeleri görebilmek için alttaki yorum satırını
+                    // açınız
                     // System.out.println(secondNumList.toString());
 
                     System.out.println(w + 1 + ". üretilen sayı ="
-                            + (double) resultNum / ((int) Math.pow(10, (firstNumDigit)))); // Üretilen
-                    // Random
-                    // sayı
+                            + (double) resultNum / ((int) Math.pow(10, (firstNumDigit))));
+                    // Üretilen Random sayı
                     x = resultNum;
                 }
             } else {
@@ -131,6 +134,7 @@ public class orta_kare {
     }
 
     public static int numOfDigits(float num) {
+        // Bu Fonksiyon içerisine aldığı sayının basamak sayısını döndürüyor.
         boolean tmp = true;
         int numOfDigit = 1;
         int a = 10;

@@ -28,12 +28,14 @@ public class App {
             switch (selection) {
                 case 1:
                     // Monte Carlo yöntemi için yazılan algoritma şu şekilde işlemektedir; dataList
-                    // adında excel dosyasının içeriğini tutan liste oluşturulmuştur. Öncelikle
-                    // liste küçükten büyüğe doğru, Collections.sort() metodu kullanılarak
+                    // adında excel dosyasının içeriğini tutan liste oluşturulmuştur. Bu liste
+                    // calculateAllParameters() fonksiyonuna, ihtiyaç duyulan tüm parametreleri
+                    // hesaplaması için gönderilmiştir.
+                    // Liste küçükten büyüğe doğru, Collections.sort() metodu kullanılarak
                     // sıralanması sağlandı. Sıralı listenin
                     // içerisinde ki elemanların frekans değerlerinin hesaplanması için
-                    // getFrequency() metoduna, dataList'i yolluyorum ve bunun sonucunda bana bu
-                    // metot bir liste döndürüyor. Bu liste;
+                    // getFrequency() metoduna, dataList'i yolluyorum ve bunun sonucunda bana
+                    // bir liste döndürüyor. Bu liste;
                     // [gönderilen miktar1, frekans değeri1, gönderilen miktar2, frekans değeri2,
                     // ....]
                     // tarzında kaç farklı değer varsa, listenin çift sayılı indexlerinde gönderilen

@@ -13,6 +13,7 @@ public class read_xlsx_file {
     private static final String NAME = "./data/fabrika.xlsx";
 
     public static List getCellData() throws IOException {
+        // Bu fonsiyon .xlsx dosyasının içeriğini okumamızı saylar
         List<Integer> dataList = new ArrayList<Integer>();
 
         XSSFWorkbook workbook = new XSSFWorkbook(NAME);
