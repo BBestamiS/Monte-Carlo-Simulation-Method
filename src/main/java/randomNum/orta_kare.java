@@ -48,7 +48,8 @@ public class orta_kare {
                         resultNum = resultNum * (int) Math.pow(10, (firstNumDigit - digitOfResult));
                     }
                     // System.out.println(secondNumList.toString());
-                    System.out.println((double) resultNum / (((int) Math.pow(10, (firstNumDigit - 1))) * 10)); // Üretilen
+                    System.out.println(w + 1 + ". üretilen sayı ="
+                            + (double) resultNum / (((int) Math.pow(10, (firstNumDigit - 1))) * 10)); // Üretilen
                     // Random
                     // sayı
                     x = resultNum;
